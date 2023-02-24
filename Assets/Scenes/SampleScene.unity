@@ -9948,6 +9948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -25417,7 +25418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxEffect: 0.9
   offset: 0
-  camera: {fileID: 519420028}
+  theCamera: {fileID: 519420028}
 --- !u!1 &695055374
 GameObject:
   m_ObjectHideFlags: 0
@@ -25519,7 +25520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxEffect: 0.8
   offset: 0
-  camera: {fileID: 519420028}
+  theCamera: {fileID: 519420028}
 --- !u!1 &800035736
 GameObject:
   m_ObjectHideFlags: 0
@@ -25996,7 +25997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxEffect: 0.6
   offset: 0
-  camera: {fileID: 519420028}
+  theCamera: {fileID: 519420028}
 --- !u!1 &1092734201
 GameObject:
   m_ObjectHideFlags: 0
@@ -26088,6 +26089,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9078150803867475430, guid: 13be70b1d515d294388cb3c871dbd522, type: 3}
+      propertyPath: slideCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9078150803867475435, guid: 13be70b1d515d294388cb3c871dbd522, type: 3}
+      propertyPath: hangTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9078150803867475435, guid: 13be70b1d515d294388cb3c871dbd522, type: 3}
+      propertyPath: coyoteTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9078150803867475435, guid: 13be70b1d515d294388cb3c871dbd522, type: 3}
+      propertyPath: jumpBuffer
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9078150803867475435, guid: 13be70b1d515d294388cb3c871dbd522, type: 3}
+      propertyPath: maxAirJumps
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9078150803867475435, guid: 13be70b1d515d294388cb3c871dbd522, type: 3}
+      propertyPath: upwardMovementMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9078150803867475435, guid: 13be70b1d515d294388cb3c871dbd522, type: 3}
+      propertyPath: downwardMovementMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9078150803867475436, guid: 13be70b1d515d294388cb3c871dbd522, type: 3}
       propertyPath: animOffset.x
       value: 0
@@ -26321,7 +26350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxEffect: 0.7
   offset: 0
-  camera: {fileID: 519420028}
+  theCamera: {fileID: 519420028}
 --- !u!1 &1188941033
 GameObject:
   m_ObjectHideFlags: 3
@@ -26692,7 +26721,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxEffect: 0.5
   offset: 0
-  camera: {fileID: 519420028}
+  theCamera: {fileID: 519420028}
 --- !u!1 &1317137355
 GameObject:
   m_ObjectHideFlags: 0
@@ -27191,7 +27220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxEffect: 0
   offset: 0
-  camera: {fileID: 519420028}
+  theCamera: {fileID: 519420028}
 --- !u!1 &1409499121
 GameObject:
   m_ObjectHideFlags: 0
@@ -27668,7 +27697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxEffect: 0.4
   offset: 0
-  camera: {fileID: 519420028}
+  theCamera: {fileID: 519420028}
 --- !u!1 &1617454966
 GameObject:
   m_ObjectHideFlags: 0

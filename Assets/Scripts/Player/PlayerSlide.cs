@@ -58,6 +58,7 @@ public class PlayerSlide : MonoBehaviour
 
     IEnumerator stopSlide()
     {
+        playerCon.canSlideJump = true;
         yield return new WaitForSeconds(slideTime);
 
         normalColl.enabled = true;
@@ -67,6 +68,7 @@ public class PlayerSlide : MonoBehaviour
         playerAnim.SetBool("Sliding", false);
 
         yield return new WaitForSeconds(slideCooldown);
+        playerCon.canSlideJump = false;
         canSlide = true;
     }
 

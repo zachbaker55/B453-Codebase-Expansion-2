@@ -18,7 +18,7 @@ public class PlayerJump : MonoBehaviour
     //public bool variableJumpHeight;
     public float jumpCutOff;
     public float speedLimit;
-    public float hangTime = 0.15f;
+    public float coyoteTime = 0.15f;
     public float jumpBuffer = 0.15f;
 
     public float jumpSpeed;
@@ -27,8 +27,8 @@ public class PlayerJump : MonoBehaviour
 
     public bool canJumpAgain = false;
     private bool desiredJump;
-    private float jumpBufferCounter;
-    private float hangTimeCounter = 0;
+    private float jumpBufferCounter = 0;
+    private float coyoteTimeCounter = 0;
     private bool pressingJump;
     public bool onGround;
     private bool isJumping;
@@ -36,6 +36,7 @@ public class PlayerJump : MonoBehaviour
     private PlayerEffects playerEffects;
     private PlayerDash playerDash;
     private PlayerState playerState;
+    private PlayerController playerCon;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,7 @@ public class PlayerJump : MonoBehaviour
         playerEffects = GetComponent<PlayerEffects>();
         playerDash = GetComponent<PlayerDash>();
         playerState = GetComponent<PlayerState>();
+        playerCon = GetComponent<PlayerController>();
         defaultGravityScale = 1f;
     }
 
@@ -54,9 +56,9 @@ public class PlayerJump : MonoBehaviour
         //Handles jump input
         if (Input.GetKeyDown(KeyCode.Space) && playerState.state != PlayerState.State.Talking)
         {
+            playerState.state = PlayerState.State.Jumping;
             desiredJump = true;
             pressingJump = true;
-            playerState.state = PlayerState.State.Jumping;
         }
         else if (Input.GetKey(KeyCode.Space) && playerState.state != PlayerState.State.Talking)
         {
@@ -76,7 +78,6 @@ public class PlayerJump : MonoBehaviour
 
         if (jumpBuffer > 0)
         {
-            //Debug.Log("Jump Buffer");
             if (desiredJump)
             {
                 jumpBufferCounter += Time.deltaTime;
@@ -91,12 +92,10 @@ public class PlayerJump : MonoBehaviour
 
         if(!isJumping && !onGround)
         {
-            hangTimeCounter += Time.deltaTime;
-        }
-        else
-        {
-            hangTimeCounter = 0;
-        }
+            coyoteTimeCounter += Time.deltaTime;
+        } else coyoteTimeCounter = 0;
+        
+
     }
 
     private void FixedUpdate()
@@ -189,12 +188,12 @@ public class PlayerJump : MonoBehaviour
 
     private void DoAJump()
     {
-        //Debug.Log("Doing a jump");
-        if(onGround || hangTimeCounter > 0.03f && hangTimeCounter < hangTime)
+        if(onGround || coyoteTime > coyoteTimeCounter && !isJumping || playerCon.canSlideJump)
         {
+            playerCon.canSlideJump = false;
             desiredJump = false;
             jumpBufferCounter = 0;
-            hangTimeCounter = 0;
+            coyoteTimeCounter = 0;
 
             //Debug.Log("Physics Gravity: " + Physics2D.gravity.y);
             //Debug.Log("RB Gravity Scale: " + rb.gravityScale);
@@ -221,5 +220,7 @@ public class PlayerJump : MonoBehaviour
                 playerEffects.jumpEffects();
             }
         }
+
+
     }
 }

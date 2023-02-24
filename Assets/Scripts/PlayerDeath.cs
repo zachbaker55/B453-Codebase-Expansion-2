@@ -21,10 +21,10 @@ public class PlayerDeath : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision detected");
+        //Debug.Log("Collision detected");
         if(collision.gameObject.layer == 7)
         {
-            Debug.Log("VOID");
+            //Debug.Log("VOID");
             playerDead = true;
         }
     }

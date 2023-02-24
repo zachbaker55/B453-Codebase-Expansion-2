@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public bool pressingKey;
     public bool onGround;
     public bool hasBall;
+    public bool canSlideJump;
 
     // Start is called before the first frame update
     void Start()
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetKey(KeyCode.S) && !playerDash.isDashing && playerState.state != PlayerState.State.Talking)
         {
-            playerAnim.SetFloat("CrouchDirection", 1f);
+            //playerAnim.SetFloat("CrouchDirection", 1f);
             playerAnim.SetBool("Crouching", true);
             playerState.state = PlayerState.State.Crouching;
         }
@@ -103,7 +104,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-     
+
         onGround = ground.getOnGround();
 
         velocity = rb.velocity;
